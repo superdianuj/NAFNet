@@ -20,6 +20,10 @@ python denoiser.py --dir <directory of noisy images> --im_size <size of input an
 ```
 Denoised images are stored in folder `denoised_images'.
 
+### Reference Results (Noisy left, Denoised Right)
+![ezgif com-added-text](https://github.com/superdianuj/NAFNet/assets/47445756/acb9729a-36d5-464d-936a-d850c54a6109)
+
+
 
 ## Debluring
 
@@ -30,7 +34,8 @@ python deblur.py --dir <directory of noisy images> --im_size <size of input and 
 Deblurred images are stored in folder `deblurred_images'.
 
 
-
+### Reference Results (Blurry left, Deblurred Right)
+![ezgif com-combine](https://github.com/superdianuj/NAFNet/assets/47445756/45ad2ebc-c728-4dca-a7b6-fe494304b490)
 
 
 ## Reference
