@@ -1,6 +1,6 @@
 
-## NAFNet: Nonlinear Activation Free Network for Image Restoration
-
+# NAFNet: Nonlinear Activation Free Network for Image Restoration
+## Setup
 ```bash
 git clone https://github.com/megvii-research/NAFNet
 cd NAFNet
