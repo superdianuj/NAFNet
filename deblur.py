@@ -110,7 +110,7 @@ def main(args):
         single_image_inference(NAFNet, inp, output_path)
 
     gifer(out_dir, 'deblurred_images.gif', fps=2)
-    gifer(ref_dir, 'original_images.gif', fps=2)
+    gifer(ref_dir, 'blurry_images.gif', fps=2)
 
 
 if __name__ == '__main__':
