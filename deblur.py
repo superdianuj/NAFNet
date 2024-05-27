@@ -99,15 +99,28 @@ def main(args):
     if os.path.exists(ref_dir):
         os.system(f'rm -rf {ref_dir}')
     os.makedirs(ref_dir, exist_ok=True)
+    counter=0
 
     for img_path in images_path:
         image = cv2.imread(img_path)
         if IMG_SIZE!=None:
             image = cv2.resize(image, (IMG_SIZE, IMG_SIZE))
-        cv2.imwrite(os.path.join(ref_dir, os.path.basename(img_path)), image)
+        cv2.imwrite(os.path.join(ref_dir, str(counter)+'.jpg'), image)
         inp = img2tensor(image)
-        output_path = os.path.join(out_dir, os.path.basename(img_path))
+        output_path = os.path.join(out_dir, str(counter)+'.jpg')
         single_image_inference(NAFNet, inp, output_path)
+        counter+=1
+
+
+    file_names = sorted(os.listdir(out_dir), key=lambda x: int(x.split('_')[-1].split('.')[0]) if '_' in x else int(x.split('.')[0]))
+
+    # Full paths of the files
+    images_path = [os.path.join(out_dir, file_name) for file_name in file_names if file_name.endswith(('.jpg'))]
+
+    for path in images_path:
+        img = cv2.imread(path)
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        cv2.imwrite(path, img)
 
     gifer(out_dir, 'deblurred_images.gif', fps=2)
     gifer(ref_dir, 'blurry_images.gif', fps=2)
